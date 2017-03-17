@@ -1,17 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-int main( int argc, char **argv ){
+void createArray (int numbers[], int size){
   int i;
-  int size = 5;
-  int numbers[size];
+  for (i = 0; i<size; i++){
+    numbers[i]=rand() % 100;
+  }
+}
+
+
+void displayArray(int numbers[], int size){
+  int i;
   printf("Array:\n");
   printf("[");
   for (i = 0; i<size; i++){
     printf(" %d ",numbers[i]);
-    numbers[i]=rand() % 100;
   }
   printf("]\n\n");
+}
+
+int main( int argc, char **argv ){
+  int size=5;
+  int numbers[size];
+  createArray(numbers,size);
+  displayArray(numbers,size);
 
   return 0;
 }
