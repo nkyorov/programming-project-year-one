@@ -1,5 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+int readSize(){
+  printf("Size of array:\n");
+  int size;
+  scanf("%d",&size);
+  return size;
+}
+
 void createArray (int numbers[], int size){
   int i;
   for (i = 0; i<size; i++){
@@ -18,11 +26,11 @@ void displayArray(int numbers[], int size){
   printf("]\n\n");
 }
 
+
 int main( int argc, char **argv ){
-  int size=5;
+  int size = readSize();;
   int numbers[size];
+
   createArray(numbers,size);
   displayArray(numbers,size);
-
-  return 0;
 }
