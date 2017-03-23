@@ -13,6 +13,26 @@ int readSize(){
     return size;
   }
 }
+
+int readChoice(){
+  int choice;
+  if(scanf("%d",&choice)!=1){
+    printf("\n|||Expected number|||\n\n");
+    exit(1);
+  }
+  else{
+    return choice;
+  }
+}
+char showMenu(){
+  printf("\n\n              Sorting algorithms          \n");
+  printf("1.  Show current array\n");
+  printf("2.  Bubble sort\n");
+  printf("3.  Insertion sort\n");
+  printf("4.  Quicksort\n");
+  printf("5.  Quit\n");
+  printf("\n");
+}
 void createArray (int numbers[], int size){
   int i;
   for (i = 0; i<size; i++){
