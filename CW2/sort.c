@@ -36,7 +36,7 @@ char showMenu(){
 void createArray (int numbers[], int size){
   int i;
   for (i = 0; i<size; i++){
-    numbers[i]=rand() % 100;
+    numbers[i]=rand() % 100 + 1;
   }
 }
 
@@ -52,6 +52,9 @@ void displayArray(int numbers[], int size){
 }
 
 void bubbleSort(int numbers[], int size){
+  double start, end;
+  start = (double)clock();
+  start = start/(double)CLOCKS_PER_SEC;
     int i;
     int j;
     int temp;
@@ -65,5 +68,9 @@ void bubbleSort(int numbers[], int size){
         }
       }
     }
+    end = (double)clock();
+    end = end/(double)CLOCKS_PER_SEC;
+
     printf("Bubble sort done!\n");
+    printf("\nSort took %d seconds.\n",end - start);
 }
