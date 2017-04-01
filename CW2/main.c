@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "prototypes.h"
 int main( int argc, char **argv ){
   while(1){
@@ -36,6 +37,21 @@ int main( int argc, char **argv ){
       case 3:
         break;
       case 4:
+      	printf("\n");
+        printf("Array size: ");
+        size = readInput();
+  		int *numbers_copy;
+
+  		printf("Random numbers limit: ");
+        limit = readInput();
+		numbers=generateNumbers(size,limit);
+      	
+      	numbers_copy=createArray(size);
+      	memcpy(numbers_copy,numbers,size*sizeof(int));
+      	bubbleSort(numbers,size);
+      	insertionSort(numbers_copy,size);
+      	free(numbers);
+      	free(numbers_copy);
       	break;
       case 5:
       	break;
