@@ -1,6 +1,7 @@
-int readSize();
-int readChoice();
+int readInput();
 char showMenu();
-void createArray (int numbers[], int size);
+int *createArray (int size);
+int *generateNumbers(int size, int limit);
 void displayArray(int numbers[], int size);
 void bubbleSort(int numbers[], int size);
+void insertionSort(int numbers[], int size);
