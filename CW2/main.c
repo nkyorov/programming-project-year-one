@@ -48,8 +48,18 @@ int main( int argc, char **argv ){
       	
       	numbers_copy=createArray(size);
       	memcpy(numbers_copy,numbers,size*sizeof(int));
-      	bubbleSort(numbers,size);
-      	insertionSort(numbers_copy,size);
+      	double bubbleTime= bubbleSort(numbers,size);
+      	double insertionTime=insertionSort(numbers_copy,size);
+
+      	printf("\n");
+      	
+      	if(bubbleTime>insertionTime){
+      		printf("Bubble sort is slower by %f seconds.\n",bubbleTime-insertionTime);
+      	}
+      	if(insertionTime>bubbleTime){
+      		printf("Insertion sort is slower by %f seconds\n",insertionTime-bubbleTime);
+      	}
+
       	free(numbers);
       	free(numbers_copy);
       	break;

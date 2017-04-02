@@ -19,7 +19,7 @@ int *createArray(int size){
   int *arrayPtr;
 
   arrayPtr = (int *)malloc(sizeof(int)*size);
-
+  printf("\nCreating array...\n");
   if(arrayPtr != NULL){
     for(i = 0; i < size; i++){
       arrayPtr[i] = 0;
@@ -31,6 +31,7 @@ int *createArray(int size){
 int *generateNumbers(int size, int limit){
   int *arrayPtr = createArray(size);
   int j = 0;
+  printf("\nGenerating numbers...\n");
   if(arrayPtr != NULL){
     for(j = 0; j < size; j++){
       arrayPtr[j] = rand() % limit + 1;
@@ -55,7 +56,7 @@ void displayArray(int numbers[], int size){
   int i;
   printf("\nArray:\n");
   for (i = 0; i<size; i++){
-    if(i%10 == 0 && i>0){
+    if(i%16 == 0 && i>0){
       printf("\n");
     }
 
@@ -63,7 +64,7 @@ void displayArray(int numbers[], int size){
   }
 }
 
-void bubbleSort(int numbers[], int size){
+double bubbleSort(int numbers[], int size){
   double start, end;
   start = (double)clock();
   start = start/(double)CLOCKS_PER_SEC;
@@ -83,11 +84,13 @@ void bubbleSort(int numbers[], int size){
   }
   end = (double)clock();
   end = end/(double)CLOCKS_PER_SEC;
-  printf("\nSort took %f seconds.\n",end - start);
+  double bubbleTime=end-start;
+  printf("\nSort took %f seconds.\n",bubbleTime);
   printf("Bubble sort done!\n");
+  return bubbleTime;
 }
 
-void insertionSort(int numbers[], int size){
+double insertionSort(int numbers[], int size){
   double start, end;
   start = (double)clock();
   start = start/(double)CLOCKS_PER_SEC;
@@ -106,6 +109,8 @@ void insertionSort(int numbers[], int size){
   }
   end = (double)clock();
   end = end/(double)CLOCKS_PER_SEC;
-  printf("\nSort took %f seconds.\n",end - start);
+  double insertionTime=end-start;
+  printf("\nSort took %f seconds.\n",insertionTime);
   printf("Insertion sort done!\n");
+  return insertionTime;
 }
