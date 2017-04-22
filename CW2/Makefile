@@ -4,7 +4,7 @@
 EXE_DIR = .
 EXE = $(EXE_DIR)/Sort
 
-SRC= sort.c main.c
+SRC= arrays.c sort.c main.c
 
 # generic build details
 
@@ -29,7 +29,6 @@ $(EXE): $(OBJ)
 clean:
 	rm -f $(OBJ) $(EXE)
 
-# dependencies
-
 main.o: main.c
 sort.o: sort.c prototypes.h
+arrays.o: arrays.c prototypes.h

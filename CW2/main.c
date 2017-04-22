@@ -35,6 +35,13 @@ int main( int argc, char **argv ){
   		free(numbers);      
         break;
       case 3:
+        printf("\n");
+        printf("Array size: ");
+        size = readInput();
+
+        printf("Random numbers limit: ");
+        limit = readInput();
+  		numbers=generateNumbers(size,limit);      
         break;
       case 4:
       	printf("\n");
