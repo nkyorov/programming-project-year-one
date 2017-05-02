@@ -3,33 +3,44 @@
 #include <string.h>
 #include "prototypes.h"
 int readInput(){
-    int input;
-    if(scanf("%d",&input)!=1){
-        printf("\n|||Expected number|||\n\n");
-        exit(1);
-    }
-    else{
-        return input;
-    }
+  int input;
+  if(scanf("%d",&input)!=1){
+      printf("\n|||Expected number|||\n\n");
+      exit(1);
+  }
+  else{
+      return input;
+  }
 }
 
+void swap(int *firstElement, int *secondElement){
+  int temp = *firstElement;
+  *firstElement = *secondElement;
+  *secondElement = temp;
+}
+
+void memError(){
+  fprintf(stderr," Out of memory");
+  exit(1);
+}
+
+
 int *createArray(int size){
-    int i = 0;
-    int *arrayPtr;
-    if (size<0){
-        printf("Size cannot be negative number");
-        exit(1);
-    }
-    else{
-        arrayPtr = (int *)malloc(sizeof(int)*size);
-        printf("\nCreating array...\n");
-        if(arrayPtr != NULL){
-            for(i = 0; i < size; i++){
-                arrayPtr[i] = 0;
-            }
-        }
-    }
-  return arrayPtr;
+  int i = 0;
+  int *arrayPtr;
+  if (size<0){
+    memError();
+  }
+  else{
+      arrayPtr = (int *)malloc(sizeof(int)*size);
+      printf("\nCreating array...\n");
+      if(arrayPtr != NULL){
+          for(i = 0; i < size; i++){
+              arrayPtr[i] = 0;
+          }
+      }
+  }
+return arrayPtr;
 }
 
 
@@ -58,14 +69,17 @@ char showMenu(){
 }
 
 void displayArray(int numbers[], int size){
+  printf("Do you want to see the array?(Y/N)\n");
+  char input[100];
+  scanf("%s",&input);
   int i;
-  printf("\nArray:\n");
-  for (i = 0; i<size; i++){
-    if(i%16 == 0 && i>0){
-      printf("\n");
+  if (tolower(input[0]) == 'y'){
+    printf("\nArray:\n");
+    for (i = 0; i<size; i++){
+      if(i%16 == 0 && i>0){
+        printf("\n");
+      }
+      printf(" %d ",numbers[i]);
     }
-
-    printf(" %d ",numbers[i]);
   }
 }
-

@@ -1,7 +1,10 @@
 int readInput();
+void swap(int *firstElement, int *secondElement);
+void memError();
 char showMenu();
 int *createArray (int size);
 int *generateNumbers(int size, int limit);
 void displayArray(int numbers[], int size);
 double bubbleSort(int numbers[], int size);
 double insertionSort(int numbers[], int size);
+void quickSort(int numbers[],int left, int right);

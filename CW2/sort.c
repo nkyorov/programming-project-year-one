@@ -7,17 +7,13 @@ double bubbleSort(int numbers[], int size){
   double start, end;
   start = (double)clock();
   start = start/(double)CLOCKS_PER_SEC;
-  int i;
-  int j;
-  int temp;
+  int i,j,temp;
   size = size - 1;
   printf("\nYour array is being sorted...\n");
   for(i=0; i<size; i++){
     for(j=0; j<size-i; j++){
       if(numbers[j]>numbers[j+1]){
-        temp = numbers[j+1];
-        numbers[j+1] = numbers[j];
-        numbers[j] = temp;
+        swap(&numbers[j+1],&numbers[j]);
       }
     }
   }
@@ -33,9 +29,7 @@ double insertionSort(int numbers[], int size){
   double start, end;
   start = (double)clock();
   start = start/(double)CLOCKS_PER_SEC;
-  int i;
-  int j;
-  int temp;
+  int i,j,temp;
   printf("\nYour array is being sorted...\n");
   for(i=0; i<size; i++){
   	temp = numbers[i];
@@ -53,4 +47,27 @@ double insertionSort(int numbers[], int size){
   printf("Insertion sort done!\n");
   return insertionTime;
 }
+void quickSort(int numbers[],int first, int last){
+  int left, right, pivot, temp;
+  if(first<last){
+    pivot=first;
+    left=first;
+    right=last;
 
+    while(left<right){
+      while(numbers[left]<=numbers[pivot]&&left<last){
+        left++;
+      }
+      while(numbers[right]>numbers[pivot]){
+        right--;
+      }
+      if(left<right){
+        swap(&numbers[left],&numbers[right]);
+      }
+    }
+
+    swap(&numbers[pivot],&numbers[right]);
+    quickSort(numbers,first,right-1);
+    quickSort(numbers,right+1,last);
+  }
+}
