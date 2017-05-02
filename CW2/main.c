@@ -9,7 +9,6 @@ int main( int argc, char **argv ){
     int choice = readInput();
     switch (choice) {
       case 1:
-
         printf("\n");
         printf("Array size: ");
         int size = readInput();
@@ -20,7 +19,7 @@ int main( int argc, char **argv ){
 		    numbers=generateNumbers(size,limit);
 
         bubbleSort(numbers,size);
-        displayArray(numbers,size);
+
         free(numbers);
         break;
       case 2:
@@ -33,7 +32,7 @@ int main( int argc, char **argv ){
   		  numbers=generateNumbers(size,limit);
 
   		  insertionSort(numbers,size);
-  		  displayArray(numbers,size);
+
   		  free(numbers);
         break;
       case 3:
@@ -48,13 +47,16 @@ int main( int argc, char **argv ){
         double start, end;
         start = (double)clock();
         start = start/(double)CLOCKS_PER_SEC;
+
         quickSort(numbers,0,size-1);
+
         end = (double)clock();
         end = end/(double)CLOCKS_PER_SEC;
         double quickTime=end-start;
+
         printf("\nSort took %f seconds.\n",quickTime);
         printf("Quick sort done!\n");
-        displayArray(numbers,size);
+
         free(numbers);
         break;
       case 4:
@@ -101,6 +103,7 @@ int main( int argc, char **argv ){
 
         bubbleTime= bubbleSort(numbers,size);
 
+
         start = (double)clock();
         start = start/(double)CLOCKS_PER_SEC;
 
@@ -113,7 +116,6 @@ int main( int argc, char **argv ){
         printf("\nSort took %f seconds.\n",quickTime);
         printf("Quick sort done!\n");
 
-        displayArray(numbers_copy,size);
         free(numbers);
         printf("\n");
 
@@ -125,8 +127,98 @@ int main( int argc, char **argv ){
         }
       	break;
       case 6:
+        printf("\n");
+        printf("Array size: ");
+        size = readInput();
+        *numbers_copy;
+
+        printf("Random numbers limit: ");
+        limit = readInput();
+        numbers=generateNumbers(size,limit);
+
+        //Create an exact copy of the array
+        numbers_copy=createArray(size);
+        memcpy(numbers_copy,numbers,size*sizeof(int));
+
+        insertionTime=insertionSort(numbers_copy,size);
+        start = (double)clock();
+        start = start/(double)CLOCKS_PER_SEC;
+
+        quickSort(numbers_copy,0,size-1);
+
+        end = (double)clock();
+        end = end/(double)CLOCKS_PER_SEC;
+        quickTime=end-start;
+
+        printf("\nSort took %f seconds.\n",quickTime);
+        printf("Quick sort done!\n");
+        printf("\n");
+
+        if(quickTime>insertionTime){
+          printf("Quick sort is slower by %f seconds.\n",quickTime-insertionTime);
+        }
+        if(insertionTime>quickTime){
+          printf("Insertion sort is slower by %f seconds\n",insertionTime-quickTime);
+        }
+
+
+        free(numbers);
+        free(numbers_copy);
       	break;
       case 7:
+        printf("\n");
+        printf("Array size: ");
+        size = readInput();
+        *numbers_copy;
+        int *numbers_copy2;
+
+        printf("Random numbers limit: ");
+        limit = readInput();
+        numbers=generateNumbers(size,limit);
+
+        //Create an exact copy of the array
+        numbers_copy=createArray(size);
+        numbers_copy2=createArray(size);
+        memcpy(numbers_copy,numbers,size*sizeof(int));
+        memcpy(numbers_copy2,numbers,size*sizeof(int));
+
+
+        bubbleTime= bubbleSort(numbers,size);
+        insertionTime=insertionSort(numbers_copy,size);
+        start = (double)clock();
+        start = start/(double)CLOCKS_PER_SEC;
+
+        quickSort(numbers_copy2,0,size-1);
+
+        end = (double)clock();
+        end = end/(double)CLOCKS_PER_SEC;
+        quickTime=end-start;
+
+        printf("\nSort took %f seconds.\n",quickTime);
+        printf("Quick sort done!\n");
+        printf("\n");
+
+
+        printf("\n");
+
+        if(quickTime>insertionTime){
+          if(quickTime>bubbleTime){
+            printf("Quick sort is the fastest of them all\n");
+          } else{
+            printf("Bubble sort is the fastest of them all\n");
+          }
+        } else if(insertionTime>bubbleTime){
+          printf("Insertion sort is the fastest of them all\n");
+        } else{
+          printf("Bubble sort is the fastest of them all\n");
+        }
+
+
+        free(numbers);
+        free(numbers_copy);
+        free(numbers_copy2);
+        break;
+      case 8:
         exit(1);
         break;
       default:

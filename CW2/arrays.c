@@ -64,22 +64,18 @@ char showMenu(){
   printf("4.  Compare Bubble sort and Insertion sort\n");
   printf("5.  Compare Bubble sort and Quicksort\n");
   printf("6.  Compare Insertion sort and Quicksort\n");
-  printf("7.  Quit\n");
+  printf("7.  Compare Insertion sort, Bubble sort and Quicksort\n");
+  printf("8.  Quit\n");
   printf("\n");
 }
 
 void displayArray(int numbers[], int size){
-  printf("Do you want to see the array?(Y/N)\n");
-  char input[100];
-  scanf("%s",&input);
   int i;
-  if (tolower(input[0]) == 'y'){
-    printf("\nArray:\n");
-    for (i = 0; i<size; i++){
-      if(i%16 == 0 && i>0){
-        printf("\n");
-      }
-      printf(" %d ",numbers[i]);
+  printf("\nArray:\n");
+  for (i = 0; i<size; i++){
+    if(i%16 == 0 && i>0){
+      printf("\n");
     }
+    printf(" %d ",numbers[i]);
   }
 }
