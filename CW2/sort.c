@@ -4,9 +4,8 @@
 #include <string.h>
 #include "prototypes.h"
 double bubbleSort(int numbers[], int size){
-  double start, end;
-  start = (double)clock();
-  start = start/(double)CLOCKS_PER_SEC;
+  clock_t start, end;
+  start = clock();
   int i,j,temp;
   size = size - 1;
   printf("\nYour array is being sorted...\n");
@@ -19,18 +18,16 @@ double bubbleSort(int numbers[], int size){
       }
     }
   }
-  end = (double)clock();
-  end = end/(double)CLOCKS_PER_SEC;
-  double bubbleTime=end-start;
+  end = clock();
+  double bubbleTime=((double)(end-start))/ CLOCKS_PER_SEC;
   printf("\nSort took %f seconds.\n",bubbleTime);
   printf("Bubble sort done!\n");
   return bubbleTime;
 }
 
 double insertionSort(int numbers[], int size){
-  double start, end;
-  start = (double)clock();
-  start = start/(double)CLOCKS_PER_SEC;
+  clock_t start, end;
+  start = clock();
   int i;
   int j;
   int temp;
@@ -44,9 +41,8 @@ double insertionSort(int numbers[], int size){
   	}
   	numbers[j+1]=temp;
   }
-  end = (double)clock();
-  end = end/(double)CLOCKS_PER_SEC;
-  double insertionTime=end-start;
+  end = clock();
+  double insertionTime=((double)(end-start))/ CLOCKS_PER_SEC;
   printf("\nSort took %f seconds.\n",insertionTime);
   printf("Insertion sort done!\n");
   return insertionTime;

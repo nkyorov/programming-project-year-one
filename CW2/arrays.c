@@ -80,3 +80,14 @@ void displayArray(int numbers[], int size){
     printf(" %d ",numbers[i]);
   }
 }
+
+void writeData(double data){
+  FILE *fp = fopen("quad.out","w");
+  if(fp == NULL){
+    printf("File quad.out is missing!");
+  }
+
+  fprintf(fp, "%f\n",data);  
+  fclose(fp);
+  return;
+}

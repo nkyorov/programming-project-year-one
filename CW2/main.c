@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <ctype.h> 
+#include <ctype.h>
 #include "prototypes.h"
 int main( int argc, char **argv ){
   while(1){
@@ -23,8 +23,8 @@ int main( int argc, char **argv ){
 		numbers=generateNumbers(size,limit);
 
         //Do the sort
-        bubbleSort(numbers,size);
-
+        double bubbleTime=bubbleSort(numbers,size);
+        writeData(bubbleTime);
         //Prevent memory leaks
         free(numbers);
         break;
@@ -58,16 +58,14 @@ int main( int argc, char **argv ){
   		numbers=generateNumbers(size,limit);
 
   		//Start the clock for benchmarking purposes
-        double start, end;
-        start = (double)clock();
-        start = start/(double)CLOCKS_PER_SEC;
+        clock_t start, end;
+        start = clock();
 
         printf("\nYour array is being sorted...\n");
         quickSort(numbers,0,size-1);
 
-        end = (double)clock();
-        end = end/(double)CLOCKS_PER_SEC;
-        double quickTime=end-start;
+        end = clock();
+        double quickTime=((double)(end-start))/ CLOCKS_PER_SEC;
         //End clock
 
         //Return time
@@ -94,7 +92,7 @@ int main( int argc, char **argv ){
       	memcpy(numbers_copy,numbers,size*sizeof(int));
 
       	//Do the sorts
-      	double bubbleTime= bubbleSort(numbers,size);
+      	bubbleTime= bubbleSort(numbers,size);
       	double insertionTime=insertionSort(numbers_copy,size);
 
       	printf("\n");
@@ -130,15 +128,13 @@ int main( int argc, char **argv ){
         bubbleTime= bubbleSort(numbers,size);
 
         //Start benchmark
-        start = (double)clock();
-        start = start/(double)CLOCKS_PER_SEC;
+        start = clock();
 
         printf("\nYour array is being sorted...\n");
         quickSort(numbers_copy,0,size-1);
 
-        end = (double)clock();
-        end = end/(double)CLOCKS_PER_SEC;
-        quickTime=end-start;
+        end = clock();
+        quickTime=((double)(end-start))/ CLOCKS_PER_SEC;
         //End benchmark
 
         //Return captured time
@@ -175,7 +171,7 @@ int main( int argc, char **argv ){
 
         //Do the sort on the original's copy
         insertionTime=insertionSort(numbers,size);
-        
+
         //Start benchmark
         start = (double)clock();
         start = start/(double)CLOCKS_PER_SEC;
@@ -209,7 +205,7 @@ int main( int argc, char **argv ){
         printf("\n");
         printf("Array size: ");
         size = readInput();
-        
+
         //Copies of the original array, which will be used to perform the othet two sorts
         *numbers_copy;
         int *numbers_copy2;
@@ -229,15 +225,13 @@ int main( int argc, char **argv ){
         insertionTime=insertionSort(numbers_copy,size);
 
         //Start benchmark
-        start = (double)clock();
-        start = start/(double)CLOCKS_PER_SEC;
+        start = clock();
 
         quickSort(numbers_copy2,0,size-1);
         printf("\nYour array is being sorted...\n");
 
-        end = (double)clock();
-        end = end/(double)CLOCKS_PER_SEC;
-        quickTime=end-start;
+        end = clock();
+        quickTime=((double)(end-start))/ CLOCKS_PER_SEC;
         //End benchmark
 
         printf("\nSort took %f seconds.\n",quickTime);
@@ -246,17 +240,16 @@ int main( int argc, char **argv ){
 
 
         //Compare the times
-        if(quickTime>insertionTime){
-          if(quickTime>bubbleTime){
-            printf("Quick sort is the fastest of them all\n");
-          } else{
-            printf("Bubble sort is the fastest of them all\n");
-          }
-        } else if(insertionTime>bubbleTime){
-          printf("Insertion sort is the fastest of them all\n");
-        } else{
-          printf("Bubble sort is the fastest of them all\n");
+        if (bubbleTime<quickTime && bubbleTime<insertionTime){
+          printf("Bubble sort is the fastest algorithm.\n");
+        }else if (quickTime<bubbleTime && quickTime<insertionTime){
+          printf("Quick sort is the fastest algorithm.\n");
         }
+        else{
+          printf("Insertion sort is the fastest algorithm.\n");
+        }
+
+
 
         //Prevent memory leaks
         free(numbers);
