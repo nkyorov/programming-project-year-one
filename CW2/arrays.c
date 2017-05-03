@@ -20,7 +20,7 @@ void swap(int *firstElement, int *secondElement){
 }
 
 void memError(){
-  fprintf(stderr," Out of memory");
+  fprintf(stderr,"\n*******Out of memory*******\n");
   exit(1);
 }
 
@@ -40,7 +40,7 @@ int *createArray(int size){
           }
       }
   }
-return arrayPtr;
+  return arrayPtr;
 }
 
 
@@ -50,7 +50,7 @@ int *generateNumbers(int size, int limit){
   printf("\nGenerating numbers...\n");
   if(arrayPtr != NULL){
     for(j = 0; j < size; j++){
-      arrayPtr[j] = rand() % limit + 1;
+    	arrayPtr[j] = rand() % limit + 1;
     }
   }
   return arrayPtr;
@@ -65,7 +65,8 @@ char showMenu(){
   printf("5.  Compare Bubble sort and Quicksort\n");
   printf("6.  Compare Insertion sort and Quicksort\n");
   printf("7.  Compare Insertion sort, Bubble sort and Quicksort\n");
-  printf("8.  Quit\n");
+  printf("\n");
+  printf("99.  Quit\n");
   printf("\n");
 }
 

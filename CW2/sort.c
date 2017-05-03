@@ -7,9 +7,7 @@ double bubbleSort(int numbers[], int size){
   double start, end;
   start = (double)clock();
   start = start/(double)CLOCKS_PER_SEC;
-  int i;
-  int j;
-  int temp;
+  int i,j,temp;
   size = size - 1;
   printf("\nYour array is being sorted...\n");
   for(i=0; i<size; i++){
