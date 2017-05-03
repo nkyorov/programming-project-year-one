@@ -82,12 +82,14 @@ void displayArray(int numbers[], int size){
 }
 
 void writeData(double data){
-  FILE *fp = fopen("quad.out","w");
-  if(fp == NULL){
-    printf("File quad.out is missing!");
-  }
-
+  FILE *fp = fopen("quad.out","a+");
   fprintf(fp, "%f\n",data);  
   fclose(fp);
+  return;
+}
+
+void clearData(){
+  char fileName[]="quad.out";  
+  remove(fileName);
   return;
 }

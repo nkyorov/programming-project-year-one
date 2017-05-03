@@ -19,9 +19,8 @@ double bubbleSort(int numbers[], int size){
     }
   }
   end = clock();
-  double bubbleTime=((double)(end-start))/ CLOCKS_PER_SEC;
-  printf("\nSort took %f microseconds.\n",bubbleTime*1000000);
-  printf("\nSort took %ld microseconds.\n",bubbleTime*1000000);
+  double bubbleTime=((double)(end-start))/CLOCKS_PER_SEC;
+  printf("\nSort took %f seconds.\n",bubbleTime);
   printf("Bubble sort done!\n");
   return bubbleTime;
 }

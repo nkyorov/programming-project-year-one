@@ -15,16 +15,16 @@ int main( int argc, char **argv ){
         //Create the array with size specified by the user
         printf("Array size: ");
         int size = readInput();
-  		int *numbers;
+  		  int *numbers;
 
-  		//Populate the array with random numbers specified by the user
-  		printf("Random numbers limit: ");
+  		  //Populate the array with random numbers specified by the user
+  		  printf("Random numbers limit: ");
         int limit = readInput();
-		numbers=generateNumbers(size,limit);
+		    numbers=generateNumbers(size,limit);
 
         //Do the sort
         double bubbleTime=bubbleSort(numbers,size);
-        writeData(bubbleTime);
+
         //Prevent memory leaks
         free(numbers);
         break;
@@ -35,16 +35,16 @@ int main( int argc, char **argv ){
         printf("Array size: ");
         size = readInput();
 
-		//Populate the array with random numbers specified by the user
+		    //Populate the array with random numbers specified by the user
         printf("Random numbers limit: ");
         limit = readInput();
-  		numbers=generateNumbers(size,limit);
+  		  numbers=generateNumbers(size,limit);
 
-  		//Do the sort
-  		insertionSort(numbers,size);
+  		  //Do the sort
+  		  insertionSort(numbers,size);
 
-		//Prevent memory leaks
-  		free(numbers);
+		    //Prevent memory leaks
+  	   	free(numbers);
         break;
       case 3:
       	//Create the array with size specified by the user
@@ -55,9 +55,9 @@ int main( int argc, char **argv ){
         //Populate the array with random numbers specified by the user
         printf("Random numbers limit: ");
         limit = readInput();
-  		numbers=generateNumbers(size,limit);
+  		  numbers=generateNumbers(size,limit);
 
-  		//Start the clock for benchmarking purposes
+  		  //Start the clock for benchmarking purposes
         clock_t start, end;
         start = clock();
 
@@ -76,16 +76,19 @@ int main( int argc, char **argv ){
         free(numbers);
         break;
       case 4:
+        //Empty previous data
+        clearData();
+
       	//Create the array with size specified by the user
       	printf("\n");
         printf("Array size: ");
         size = readInput();
-  		int *numbers_copy;
+     		int *numbers_copy;
 
-  		//Populate the array with random numbers specified by the user
-  		printf("Random numbers limit: ");
+  		  //Populate the array with random numbers specified by the user
+  	   	printf("Random numbers limit: ");
         limit = readInput();
-		numbers=generateNumbers(size,limit);
+    		numbers=generateNumbers(size,limit);
 
         //Create an exact copy of the array
       	numbers_copy=createArray(size);
@@ -105,12 +108,18 @@ int main( int argc, char **argv ){
       		printf("Insertion sort is slower by %f seconds\n",insertionTime-bubbleTime);
       	}
 
+        writeData(bubbleTime);
+        writeData(insertionTime);
+    
       	//Prevent memory leaks
       	free(numbers);
       	free(numbers_copy);
       	break;
       case 5:
-		//Create the array with size specified by the user
+        //Empty previous data
+        clearData();
+
+		    //Create the array with size specified by the user
         printf("\n");
         printf("Array size: ");
         size = readInput();
@@ -143,6 +152,7 @@ int main( int argc, char **argv ){
 
         //Prevent memory leaks
         free(numbers);
+      
         printf("\n");
 
         //Compare the sorts and print which is faster
@@ -152,9 +162,15 @@ int main( int argc, char **argv ){
         if(quickTime>bubbleTime){
           printf("Quick sort is slower by %f seconds\n",quickTime-bubbleTime);
         }
+
+        writeData(bubbleTime);
+        writeData(quickTime);
       	break;
       case 6:
-      	//Create the array with size specified by the user
+        //Empty previous data
+        clearData();
+      	
+        //Create the array with size specified by the user
         printf("\n");
         printf("Array size: ");
         size = readInput();
@@ -176,7 +192,7 @@ int main( int argc, char **argv ){
         start = (double)clock();
         start = start/(double)CLOCKS_PER_SEC;
 
-  		printf("\nYour array is being sorted...\n");
+  	   	printf("\nYour array is being sorted...\n");
         quickSort(numbers_copy,0,size-1);
 
         end = (double)clock();
@@ -196,12 +212,18 @@ int main( int argc, char **argv ){
           printf("Insertion sort is slower by %f seconds\n",insertionTime-quickTime);
         }
 
+        writeData(quickTime);
+        writeData(insertionTime);
+  
         //Prevent memory leaks
         free(numbers);
         free(numbers_copy);
       	break;
       case 7:
-      	//Create the array with size specified by the user
+        //Empty previous data
+        clearData();
+              	
+        //Create the array with size specified by the user
         printf("\n");
         printf("Array size: ");
         size = readInput();
@@ -249,7 +271,9 @@ int main( int argc, char **argv ){
           printf("Insertion sort is the fastest algorithm.\n");
         }
 
-
+        writeData(quickTime);
+        writeData(insertionTime);
+        writeData(bubbleTime);
 
         //Prevent memory leaks
         free(numbers);
@@ -261,7 +285,7 @@ int main( int argc, char **argv ){
         exit(1);
         break;
       default:
-		//Every value other than the specified in the menu
+		    //Every value other than the specified in the menu
         printf("\n\n***Invalid option***\n\n");
         break;
       }
