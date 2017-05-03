@@ -82,14 +82,14 @@ void displayArray(int numbers[], int size){
 }
 
 void writeData(double data){
-  FILE *fp = fopen("quad.out","a+");
+  FILE *fp = fopen("data.out","a+");
   fprintf(fp, "%f\n",data);  
   fclose(fp);
   return;
 }
 
 void clearData(){
-  char fileName[]="quad.out";  
+  char fileName[]="data.out";  
   remove(fileName);
   return;
 }

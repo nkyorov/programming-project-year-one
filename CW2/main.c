@@ -165,7 +165,8 @@ int main( int argc, char **argv ){
 
         writeData(bubbleTime);
         writeData(quickTime);
-      	break;
+      	system("gnuplot -p data.gnu");
+        break;
       case 6:
         //Empty previous data
         clearData();
@@ -214,7 +215,8 @@ int main( int argc, char **argv ){
 
         writeData(quickTime);
         writeData(insertionTime);
-  
+        system("gnuplot -p data.gnu");
+        
         //Prevent memory leaks
         free(numbers);
         free(numbers_copy);
@@ -222,7 +224,7 @@ int main( int argc, char **argv ){
       case 7:
         //Empty previous data
         clearData();
-              	
+
         //Create the array with size specified by the user
         printf("\n");
         printf("Array size: ");
@@ -274,7 +276,7 @@ int main( int argc, char **argv ){
         writeData(quickTime);
         writeData(insertionTime);
         writeData(bubbleTime);
-
+        system("gnuplot -p data.gnu");
         //Prevent memory leaks
         free(numbers);
         free(numbers_copy);
