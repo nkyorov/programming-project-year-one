@@ -1,6 +1,7 @@
-set nokey
-set boxwidth 0.4
-set style fill solid 1.00
-set title "Benchmarking sorting algorithms results" font ",14" tc rgb "#606060"
-
-plot "data.out" with boxes lt rgb "#00FFFF"
+set nokey 
+set boxwidth 0.3
+set style fill solid 1.00 
+set title "Benchmarking sorting algorithms"
+set ylabel "Time(seconds)"
+set tic scale 0
+plot "data.out" using 2:xtic(1) with boxes lt rgb "#DAA520"

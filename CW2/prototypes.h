@@ -8,5 +8,5 @@ void displayArray(int numbers[], int size);
 double bubbleSort(int numbers[], int size);
 double insertionSort(int numbers[], int size);
 void quickSort(int numbers[],int left, int right);
-void writeData(double data);
+void writeData(char *sort,double data);
 void clearData();

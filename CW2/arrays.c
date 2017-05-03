@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "prototypes.h"
+//Takes user input
 int readInput(){
   int input;
   if(scanf("%d",&input)!=1){
@@ -13,18 +14,20 @@ int readInput(){
   }
 }
 
+//Swaps two values
 void swap(int *firstElement, int *secondElement){
   int temp = *firstElement;
   *firstElement = *secondElement;
   *secondElement = temp;
 }
 
+//In case malloc is unsuccessfull
 void memError(){
   fprintf(stderr,"\n*******Out of memory*******\n");
   exit(1);
 }
 
-
+//Creates dynamic array given size
 int *createArray(int size){
   int i = 0;
   int *arrayPtr;
@@ -43,7 +46,7 @@ int *createArray(int size){
   return arrayPtr;
 }
 
-
+//Populates the array with random numbers between the set limit
 int *generateNumbers(int size, int limit){
   int *arrayPtr = createArray(size);
   int j = 0;
@@ -56,6 +59,7 @@ int *generateNumbers(int size, int limit){
   return arrayPtr;
 }
 
+//Print out the menu
 char showMenu(){
   printf("\n\n              Sorting algorithms          \n");
   printf("1.  Bubble sort\n");
@@ -70,6 +74,7 @@ char showMenu(){
   printf("\n");
 }
 
+//Prints out the array
 void displayArray(int numbers[], int size){
   int i;
   printf("\nArray:\n");
@@ -81,13 +86,15 @@ void displayArray(int numbers[], int size){
   }
 }
 
-void writeData(double data){
+//Writes benchmarking times to a file
+void writeData(char *sort,double data){
   FILE *fp = fopen("data.out","a+");
-  fprintf(fp, "%f\n",data);  
+  fprintf(fp,"%s\t%f\n",sort,data);  
   fclose(fp);
   return;
 }
 
+//Deletes the file
 void clearData(){
   char fileName[]="data.out";  
   remove(fileName);

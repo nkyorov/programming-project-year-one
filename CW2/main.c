@@ -22,8 +22,14 @@ int main( int argc, char **argv ){
         int limit = readInput();
 		    numbers=generateNumbers(size,limit);
 
+        //Display the array
+        displayArray(numbers,size);
+        
         //Do the sort
         double bubbleTime=bubbleSort(numbers,size);
+
+        //Display array
+        displayArray(numbers,size);
 
         //Prevent memory leaks
         free(numbers);
@@ -40,10 +46,16 @@ int main( int argc, char **argv ){
         limit = readInput();
   		  numbers=generateNumbers(size,limit);
 
+        //Display the array
+        displayArray(numbers,size);
+
   		  //Do the sort
   		  insertionSort(numbers,size);
 
-		    //Prevent memory leaks
+        //Display array
+        displayArray(numbers,size);
+		    
+        //Prevent memory leaks
   	   	free(numbers);
         break;
       case 3:
@@ -57,7 +69,10 @@ int main( int argc, char **argv ){
         limit = readInput();
   		  numbers=generateNumbers(size,limit);
 
-  		  //Start the clock for benchmarking purposes
+  		  //Display the array
+        displayArray(numbers,size);
+
+        //Start the clock for benchmarking purposes
         clock_t start, end;
         start = clock();
 
@@ -68,10 +83,13 @@ int main( int argc, char **argv ){
         double quickTime=((double)(end-start))/ CLOCKS_PER_SEC;
         //End clock
 
+        //Display array
+        displayArray(numbers,size);
+        
         //Return time
         printf("\nSort took %f seconds.\n",quickTime);
         printf("Quick sort done!\n");
-
+        
         //Prevent memory leaks
         free(numbers);
         break;
@@ -90,6 +108,9 @@ int main( int argc, char **argv ){
         limit = readInput();
     		numbers=generateNumbers(size,limit);
 
+        //Display the array
+        displayArray(numbers,size);
+        
         //Create an exact copy of the array
       	numbers_copy=createArray(size);
       	memcpy(numbers_copy,numbers,size*sizeof(int));
@@ -100,6 +121,9 @@ int main( int argc, char **argv ){
 
       	printf("\n");
 
+        //Display array
+        displayArray(numbers,size);
+
       	//Compare the times and print which sort is faster
       	if(bubbleTime>insertionTime){
       		printf("Bubble sort is slower by %f seconds.\n",bubbleTime-insertionTime);
@@ -107,11 +131,14 @@ int main( int argc, char **argv ){
       	if(insertionTime>bubbleTime){
       		printf("Insertion sort is slower by %f seconds\n",insertionTime-bubbleTime);
       	}
-
-        writeData(bubbleTime);
-        writeData(insertionTime);
-    
-      	//Prevent memory leaks
+        
+        writeData("Insertionsort",insertionTime);
+        writeData("Bubblesort",bubbleTime);
+        
+        //Invoke gnuplot
+        system("gnuplot -p data.gnu");
+      	
+        //Prevent memory leaks
       	free(numbers);
       	free(numbers_copy);
       	break;
@@ -128,6 +155,9 @@ int main( int argc, char **argv ){
         printf("Random numbers limit: ");
         limit = readInput();
         numbers=generateNumbers(size,limit);
+
+        //Display the array
+        displayArray(numbers,size);
 
         //Create an exact copy of the array
         numbers_copy=createArray(size);
@@ -149,11 +179,13 @@ int main( int argc, char **argv ){
         //Return captured time
         printf("\nSort took %f seconds.\n",quickTime);
         printf("Quick sort done!\n");
-
+        
         //Prevent memory leaks
         free(numbers);
-      
         printf("\n");
+
+        //Display array
+        displayArray(numbers,size);
 
         //Compare the sorts and print which is faster
         if(bubbleTime>quickTime){
@@ -162,10 +194,12 @@ int main( int argc, char **argv ){
         if(quickTime>bubbleTime){
           printf("Quick sort is slower by %f seconds\n",quickTime-bubbleTime);
         }
-
-        writeData(bubbleTime);
-        writeData(quickTime);
-      	system("gnuplot -p data.gnu");
+        
+        writeData("Quicksort",quickTime);
+        writeData("Bubblesort",bubbleTime);
+      	
+        //Invoke gnuplot
+        system("gnuplot -p data.gnu");
         break;
       case 6:
         //Empty previous data
@@ -181,6 +215,9 @@ int main( int argc, char **argv ){
         printf("Random numbers limit: ");
         limit = readInput();
         numbers=generateNumbers(size,limit);
+
+        //Display the array
+        displayArray(numbers,size);
 
         //Create an exact copy of the array
         numbers_copy=createArray(size);
@@ -205,6 +242,9 @@ int main( int argc, char **argv ){
         printf("Quick sort done!\n");
         printf("\n");
 
+        //Display array
+        displayArray(numbers,size);
+
         //Compare the sorts and show which is faster
         if(quickTime>insertionTime){
           printf("Quick sort is slower by %f seconds.\n",quickTime-insertionTime);
@@ -213,8 +253,10 @@ int main( int argc, char **argv ){
           printf("Insertion sort is slower by %f seconds\n",insertionTime-quickTime);
         }
 
-        writeData(quickTime);
-        writeData(insertionTime);
+        writeData("Quicksort",quickTime);
+        writeData("Insertionsort",insertionTime);
+        
+        //Invoke gnuplot
         system("gnuplot -p data.gnu");
         
         //Prevent memory leaks
@@ -245,6 +287,8 @@ int main( int argc, char **argv ){
         memcpy(numbers_copy,numbers,size*sizeof(int));
         memcpy(numbers_copy2,numbers,size*sizeof(int));
 
+        //Display the array
+        displayArray(numbers,size);
         bubbleTime= bubbleSort(numbers,size);
         insertionTime=insertionSort(numbers_copy,size);
 
@@ -262,21 +306,26 @@ int main( int argc, char **argv ){
         printf("Quick sort done!\n");
         printf("\n\n");
 
+        //Display array
+        displayArray(numbers,size);
 
         //Compare the times
         if (bubbleTime<quickTime && bubbleTime<insertionTime){
-          printf("Bubble sort is the fastest algorithm.\n");
+          printf("Bubble sort is the fastest algorithm.\n\n");
         }else if (quickTime<bubbleTime && quickTime<insertionTime){
-          printf("Quick sort is the fastest algorithm.\n");
+          printf("Quick sort is the fastest algorithm.\n\n");
         }
         else{
-          printf("Insertion sort is the fastest algorithm.\n");
+          printf("Insertion sort is the fastest algorithm.\n\n");
         }
 
-        writeData(quickTime);
-        writeData(insertionTime);
-        writeData(bubbleTime);
+        writeData("Quicksort",quickTime);
+        writeData("Insertionsort",insertionTime);
+        writeData("Bubblesort",bubbleTime);
+        
+        //Invoke gnuplot
         system("gnuplot -p data.gnu");
+        
         //Prevent memory leaks
         free(numbers);
         free(numbers_copy);
