@@ -24,13 +24,13 @@ double bubbleSort(int numbers[], int size){
 }
 
 double insertionSort(int numbers[], int size){
-  clock_t start, end;
-  start = clock();
-  int i;
-  int j;
-  int temp;
-  printf("\nYour array is being sorted...\n");
-  for(i=0; i<size; i++){
+	clock_t start, end;
+	start = clock();
+	int i;
+	int j;
+	int temp;
+	printf("\nYour array is being sorted...\n");
+	for(i=0; i<size; i++){
 	temp = numbers[i];
 	j=i-1;
 	while(temp<numbers[j] && j>=0){
@@ -38,12 +38,12 @@ double insertionSort(int numbers[], int size){
 		j=j-1;
 	}
 	numbers[j+1]=temp;
-  }
-  end = clock();
-  double insertionTime=((double)(end-start))/ CLOCKS_PER_SEC;
-  printf("\nSort took %f seconds.\n",insertionTime);
-  printf("Insertion sort done!\n");
-  return insertionTime;
+	}
+	end = clock();
+	double insertionTime=((double)(end-start))/ CLOCKS_PER_SEC;
+	printf("\nSort took %f seconds.\n",insertionTime);
+	printf("Insertion sort done!\n");
+	return insertionTime;
 }
 
 void quickSort(int numbers[],int first, int last){
