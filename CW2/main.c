@@ -5,7 +5,12 @@
 #include <ctype.h>
 #include "prototypes.h"
 int main( int argc, char **argv ){
-  while(1){
+	if (argc>1){
+		fprintf(stderr, "Usage is ./Sort\n");
+		exit(1);
+	}
+
+  	while(1){
     showMenu();
     int choice = readInput();
     switch (choice) {
@@ -15,12 +20,12 @@ int main( int argc, char **argv ){
         //Create the array with size specified by the user
         printf("Array size: ");
         int size = readInput();
-  		  int *numbers;
+  		int *numbers;
 
-  		  //Populate the array with random numbers specified by the user
-  		  printf("Random numbers limit: ");
+  		//Populate the array with random numbers specified by the user
+  		printf("Random numbers limit: ");
         int limit = readInput();
-		    numbers=generateNumbers(size,limit);
+		numbers=generateNumbers(size,limit);
 
         //Display the array
         displayArray(numbers,size);
@@ -41,16 +46,16 @@ int main( int argc, char **argv ){
         printf("Array size: ");
         size = readInput();
 
-		    //Populate the array with random numbers specified by the user
+		//Populate the array with random numbers specified by the user
         printf("Random numbers limit: ");
         limit = readInput();
-  		  numbers=generateNumbers(size,limit);
+  		numbers=generateNumbers(size,limit);
 
         //Display the array
         displayArray(numbers,size);
 
-  		  //Do the sort
-  		  insertionSort(numbers,size);
+  		//Do the sort
+  		insertionSort(numbers,size);
 
         //Display array
         displayArray(numbers,size);
@@ -67,9 +72,9 @@ int main( int argc, char **argv ){
         //Populate the array with random numbers specified by the user
         printf("Random numbers limit: ");
         limit = readInput();
-  		  numbers=generateNumbers(size,limit);
+  		numbers=generateNumbers(size,limit);
 
-  		  //Display the array
+  		//Display the array
         displayArray(numbers,size);
 
         //Start the clock for benchmarking purposes
@@ -101,7 +106,7 @@ int main( int argc, char **argv ){
       	printf("\n");
         printf("Array size: ");
         size = readInput();
-     		int *numbers_copy;
+     	int *numbers_copy;
 
   		  //Populate the array with random numbers specified by the user
   	   	printf("Random numbers limit: ");
@@ -146,7 +151,7 @@ int main( int argc, char **argv ){
         //Empty previous data
         clearData();
 
-		    //Create the array with size specified by the user
+		//Create the array with size specified by the user
         printf("\n");
         printf("Array size: ");
         size = readInput();
