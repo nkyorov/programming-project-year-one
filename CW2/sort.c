@@ -52,20 +52,19 @@ void quickSort(int numbers[],int first, int last){
 		pivot = first;
 		left = first;
 		right = last;
-	
-	while(left<right){
-		while((numbers[left]<=numbers[pivot])&&(left<last)){
-			left++;
+		while(left<right){
+			while((numbers[left]<=numbers[pivot])&&(left<last)){
+				left++;
+			}
+			while(numbers[right]>numbers[pivot]){
+				right--;
+			}
+			if(left<right){
+				swap(&numbers[left],&numbers[right]);
+			}
 		}
-		while(numbers[right]>numbers[pivot]){
-			right--;
-		}
-		if(left<right){
-			swap(&numbers[left],&numbers[right]);
-		}
+		swap(&numbers[pivot],&numbers[right]);
+		quickSort(numbers,first,right-1);
+		quickSort(numbers,right+1,last);
 	}
-	swap(&numbers[pivot],&numbers[right]);
-	quickSort(numbers,first,right-1);
-	quickSort(numbers,right+1,last);
-}
 }
