@@ -316,12 +316,12 @@ int main( int argc, char **argv ){
 
         //Compare the times
         if (bubbleTime<quickTime && bubbleTime<insertionTime){
-          printf("Bubble sort is the fastest algorithm.\n\n");
+          printf("\nBubble sort is the fastest algorithm.\n\n");
         }else if (quickTime<bubbleTime && quickTime<insertionTime){
-          printf("Quick sort is the fastest algorithm.\n\n");
+          printf("\nQuick sort is the fastest algorithm.\n\n");
         }
         else{
-          printf("Insertion sort is the fastest algorithm.\n\n");
+          printf("\nInsertion sort is the fastest algorithm.\n\n");
         }
 
         writeData("Quicksort",quickTime);
@@ -341,7 +341,7 @@ int main( int argc, char **argv ){
         exit(1);
         break;
       default:
-		    //Every value other than the specified in the menu
+		//Every value other than the specified in the menu
         printf("\n\n***Invalid option***\n\n");
         break;
       }

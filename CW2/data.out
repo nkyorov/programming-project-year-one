@@ -1,2 +1,3 @@
-Quicksort	0.000000
-Insertionsort	0.004226
+Quicksort	0.000712
+Insertionsort	0.005222
+Bubblesort	0.015428
